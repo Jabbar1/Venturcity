@@ -1,12 +1,9 @@
-package com.shaik.service.impl;
+package com.shaik.service.impl.crud;
 
 import com.shaik.domain.repository.BaseRepository;
-import com.shaik.exception.ConstraintValidationException;
-import com.shaik.exception.InvalidInputException;
 import com.shaik.exception.NotFoundException;
-import com.shaik.service.operations.BaseCrudOperations;
-import com.shaik.service.operations.EntityValidator;
-import com.shaik.service.operations.RideOperations;
+import com.shaik.service.impl.BaseEntityValidator;
+import com.shaik.service.operations.crud.BaseCrudOperations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Propagation;
@@ -14,14 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
-import javax.validation.Validation;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;

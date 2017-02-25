@@ -1,28 +1,29 @@
-package com.shaik.rest;
+package com.shaik.rest.crud;
 
-import com.shaik.service.operations.BaseCrudOperations;
+import com.shaik.service.operations.crud.BaseCrudOperations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by jabbars on 1/23/2017.
  */
-public abstract class BaseResource<L, ID> {
+public abstract class BaseResource<L, ID extends Serializable> {
 
-    protected BaseCrudOperations<L, ID> baseCrudOperations;
+    protected BaseCrudOperations<L,ID> userOperations;
 
-    public BaseResource(BaseCrudOperations<L, ID> baseCrudOperations) {
-        this.baseCrudOperations = baseCrudOperations;
+
+    public BaseResource(BaseCrudOperations<L, ID> userOperations) {
+        this.userOperations = userOperations;
     }
-
 
     /**
      * Create
      *
-     * @param meter
+     * @param request
      * @return
      */
     @RequestMapping(
@@ -33,7 +34,7 @@ public abstract class BaseResource<L, ID> {
     )
     @ResponseStatus(HttpStatus.CREATED)
     public L create(@RequestBody L request) {
-        return baseCrudOperations.create(request);
+        return userOperations.create(request);
     }
 
     /**
@@ -52,7 +53,7 @@ public abstract class BaseResource<L, ID> {
     @ResponseStatus(HttpStatus.OK)
     public L update(@PathVariable(value = "id") ID id,
                     @RequestBody L request) {
-        return baseCrudOperations.update(id, request);
+        return userOperations.update(id, request);
     }
 
     /**
@@ -67,7 +68,7 @@ public abstract class BaseResource<L, ID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public List<L> findAll() {
-        return baseCrudOperations.findAll();
+        return userOperations.findAll();
     }
 
     /**
@@ -83,7 +84,7 @@ public abstract class BaseResource<L, ID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public L find(@PathVariable("id") ID id) {
-        return baseCrudOperations.find(id);
+        return userOperations.find(id);
     }
 
     /**
@@ -98,7 +99,7 @@ public abstract class BaseResource<L, ID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") ID id) {
-        baseCrudOperations.delete(id);
+        userOperations.delete(id);
     }
 
 }

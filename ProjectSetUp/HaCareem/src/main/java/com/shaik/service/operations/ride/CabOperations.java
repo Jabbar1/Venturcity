@@ -1,4 +1,4 @@
-package com.shaik.service.operations;
+package com.shaik.service.operations.ride;
 
 import com.shaik.model.Cab;
 import com.shaik.model.TrackDetails;
@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 /**
  * Created by jabbars on 2/25/2017.
  */
-public interface CabOperations<C extends Cab, ID extends Serializable> extends UserOperations<C,ID> {
+public interface CabOperations<C extends Cab, ID extends Serializable> extends RideOperations<C,ID> {
 
     TrackDetails track();
     TrackDetails distanceCovered();

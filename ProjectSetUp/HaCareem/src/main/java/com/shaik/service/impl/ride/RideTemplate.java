@@ -1,27 +1,28 @@
-package com.shaik.service.impl;
+package com.shaik.service.impl.ride;
 
 import com.shaik.domain.entity.EUser;
 import com.shaik.domain.repository.BaseRepository;
+import com.shaik.integration.google.GoogleOperations;
 import com.shaik.model.Invoice;
 import com.shaik.model.User;
-import com.shaik.service.operations.RideOperations;
+import com.shaik.service.operations.ride.RideOperations;
 
+import javax.inject.Inject;
 import java.io.Serializable;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  * Created by jabbars on 2/25/2017.
  */
 public abstract class RideTemplate<R extends User,E extends EUser,ID extends Serializable>
-        extends BaseCrudTemplate<R,E,ID>  implements RideOperations<R,ID>{
+        implements RideOperations<R,ID>{
 
-    public RideTemplate(BaseRepository<E, ID> baseRepository,
-                        Function<E, R> modelMapper,
-                        Function<R, E> entityMapper,
-                        BiFunction<R, E, E> updateMapper,
-                        BaseEntityValidator<R> baseEntityValidator) {
-        super(baseRepository, modelMapper, entityMapper, updateMapper, baseEntityValidator);
+    BaseRepository<E,ID> baseRepository;
+
+    @Inject
+    GoogleOperations googleOperations;
+
+    public RideTemplate(BaseRepository<E, ID> baseRepositorys) {
+        this.baseRepository = baseRepository;
     }
 
     @Override

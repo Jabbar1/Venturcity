@@ -1,4 +1,4 @@
-package com.shaik.service.operations;
+package com.shaik.service.operations.crud;
 
 import org.springframework.validation.annotation.Validated;
 

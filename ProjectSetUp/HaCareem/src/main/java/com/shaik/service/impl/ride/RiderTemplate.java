@@ -1,19 +1,13 @@
-package com.shaik.service.impl;
+package com.shaik.service.impl.ride;
 
 import com.shaik.domain.entity.ERider;
-import com.shaik.domain.repository.BaseRepository;
 import com.shaik.domain.repository.RiderRepository;
-import com.shaik.mapper.OwnerMapper;
-import com.shaik.mapper.RiderMapper;
 import com.shaik.model.CabRequest;
 import com.shaik.model.Rider;
-import com.shaik.service.operations.RiderOperations;
+import com.shaik.service.operations.ride.RiderOperations;
 
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.UUID;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  * Created by jabbars on 2/25/2017.
@@ -24,10 +18,8 @@ public class RiderTemplate extends RideTemplate<Rider,ERider,UUID> implements Ri
 
     private RiderRepository riderRepository;
 
-    @Inject
-    public RiderTemplate(RiderRepository riderRepository,
-                         BaseEntityValidator<Rider> baseEntityValidator) {
-        super(riderRepository, RiderMapper.entity, RiderMapper.model, RiderMapper.update, baseEntityValidator);
+    public RiderTemplate(RiderRepository riderRepository) {
+        super(riderRepository);
         this.riderRepository = riderRepository;
     }
 

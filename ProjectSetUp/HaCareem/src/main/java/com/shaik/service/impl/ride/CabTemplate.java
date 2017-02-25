@@ -1,15 +1,13 @@
-package com.shaik.service.impl;
+package com.shaik.service.impl.ride;
 
 import com.shaik.domain.entity.EUser;
 import com.shaik.domain.repository.BaseRepository;
 import com.shaik.model.Cab;
 import com.shaik.model.TrackDetails;
-import com.shaik.service.operations.CabOperations;
+import com.shaik.service.operations.ride.CabOperations;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  * Created by jabbars on 2/25/2017.
@@ -17,13 +15,8 @@ import java.util.function.Function;
 public abstract class CabTemplate<C extends Cab,E extends EUser,ID extends Serializable>
         extends RideTemplate<C,E,ID> implements CabOperations<C,ID> {
 
-
-    public CabTemplate(BaseRepository<E, ID> baseRepository,
-                       Function<E, C> modelMapper,
-                       Function<C, E> entityMapper,
-                       BiFunction<C, E, E> updateMapper,
-                       BaseEntityValidator<C> baseEntityValidator) {
-        super(baseRepository, modelMapper, entityMapper, updateMapper, baseEntityValidator);
+    public CabTemplate(BaseRepository<E, ID> baseRepositorys) {
+        super(baseRepositorys);
     }
 
     @Override

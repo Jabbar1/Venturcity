@@ -1,4 +1,4 @@
-package com.shaik.service.operations;
+package com.shaik.service.operations.ride;
 
 import com.shaik.model.Invoice;
 

@@ -42,4 +42,5 @@ public class RiderMapper {
             return dbRider;
         }
     };
+
 }
