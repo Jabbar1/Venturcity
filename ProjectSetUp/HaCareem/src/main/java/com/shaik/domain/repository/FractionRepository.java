@@ -1,8 +1,6 @@
 package com.shaik.domain.repository;
 
 import com.shaik.domain.entity.EFraction;
-import com.shaik.model.Fraction;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.Month;

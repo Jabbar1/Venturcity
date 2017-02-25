@@ -1,7 +1,6 @@
 package com.shaik.mapper;
 
 import com.shaik.domain.entity.EMeter;
-import com.shaik.model.Meter;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;

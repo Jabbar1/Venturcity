@@ -1,8 +1,7 @@
 package com.shaik.rest;
 
 import com.shaik.domain.entity.EMeter;
-import com.shaik.model.FileDetails;
-import com.shaik.service.operations.BaseOperations;
+import com.shaik.service.operations.BaseCrudOperations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +14,10 @@ import java.util.List;
  */
 public abstract class BaseResource<L, ID> {
 
-    EMeter meter = new EMeter();
-    String m = new String();
-    protected BaseOperations<L, ID> baseOperations;
+    protected BaseCrudOperations<L, ID> baseCrudOperations;
 
-    public BaseResource(BaseOperations<L, ID> baseOperations) {
-        this.baseOperations = baseOperations;
+    public BaseResource(BaseCrudOperations<L, ID> baseCrudOperations) {
+        this.baseCrudOperations = baseCrudOperations;
     }
 
 
@@ -37,15 +34,15 @@ public abstract class BaseResource<L, ID> {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @ResponseStatus(HttpStatus.CREATED)
-    public L create(@RequestBody L meter) {
-        return baseOperations.create(meter);
+    public L create(@RequestBody L request) {
+        return baseCrudOperations.create(request);
     }
 
     /**
      * Update
      *
      * @param id
-     * @param meter
+     * @param request
      * @return
      */
     @RequestMapping(
@@ -56,8 +53,8 @@ public abstract class BaseResource<L, ID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public L update(@PathVariable(value = "id") ID id,
-                    @RequestBody L meter) {
-        return baseOperations.update(id, meter);
+                    @RequestBody L request) {
+        return baseCrudOperations.update(id, request);
     }
 
     /**
@@ -72,7 +69,7 @@ public abstract class BaseResource<L, ID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public List<L> findAll() {
-        return baseOperations.findAll();
+        return baseCrudOperations.findAll();
     }
 
     /**
@@ -88,7 +85,7 @@ public abstract class BaseResource<L, ID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public L find(@PathVariable("id") ID id) {
-        return baseOperations.find(id);
+        return baseCrudOperations.find(id);
     }
 
     /**
@@ -103,21 +100,7 @@ public abstract class BaseResource<L, ID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") ID id) {
-        baseOperations.delete(id);
-    }
-
-    /**
-     * @return
-     */
-    @RequestMapping(
-            value = "/file",
-            method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    @ResponseStatus(HttpStatus.OK)
-    public List<L> readDataFromFile(@RequestBody FileDetails details) throws IOException {
-        return baseOperations.readFromCsv(details);
+        baseCrudOperations.delete(id);
     }
 
 }

@@ -3,8 +3,6 @@ package com.shaik.service.impl;
 import com.shaik.app.CareemApp;
 import com.shaik.exception.ConstraintValidationException;
 import com.shaik.exception.NotFoundException;
-import com.shaik.model.Fraction;
-import com.shaik.service.operations.FractionOperations;
 import config.DataConfig;
 import config.TestConfig;
 import org.junit.Before;
