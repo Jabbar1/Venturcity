@@ -1,26 +1,28 @@
 package com.shaik.service.impl;
 
 import com.shaik.domain.entity.EOwner;
-import com.shaik.domain.repository.BaseRepository;
+import com.shaik.domain.repository.OwnerRepository;
+import com.shaik.mapper.OwnerMapper;
 import com.shaik.model.Invoice;
 import com.shaik.model.Owner;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.util.UUID;
 
 /**
  * Created by jabbars on 2/25/2017.
  */
-public class OwnerTemplate extends CabTemplate<Owner,EOwner,Long> {
+@Named("hcOwnerTemplate")
+public class OwnerTemplate extends CabTemplate<Owner,EOwner,UUID> {
 
+    private OwnerRepository ownerRepository;
 
-
-    public OwnerTemplate(BaseRepository<EOwner, Long> baseRepository,
-                         Function<EOwner, Owner> modelMapper,
-                         Function<Owner, EOwner> entityMapper,
-                         BiFunction<Owner, EOwner, EOwner> updateMapper,
+    @Inject
+    public OwnerTemplate(OwnerRepository ownerRepository,
                          BaseEntityValidator<Owner> baseEntityValidator) {
-        super(baseRepository, modelMapper, entityMapper, updateMapper, baseEntityValidator);
+        super(ownerRepository, OwnerMapper.entity, OwnerMapper.model, OwnerMapper.update, baseEntityValidator);
+        this.ownerRepository = ownerRepository;
     }
 
 

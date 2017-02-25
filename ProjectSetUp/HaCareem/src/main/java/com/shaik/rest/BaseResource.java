@@ -1,12 +1,10 @@
 package com.shaik.rest;
 
-import com.shaik.domain.entity.EMeter;
 import com.shaik.service.operations.BaseCrudOperations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 /**

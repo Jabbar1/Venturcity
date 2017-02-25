@@ -1,5 +1,6 @@
 package com.shaik.domain.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
@@ -8,11 +9,23 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class EContact {
 
+    @Column(name = "COUNTRY_CODE")
     private String countryCode;
+
+    @Column(name = "ZIP_CODE")
     private String zipCode;
+
+    @Column(name = "PHONE")
     private Long phone;
+
+    @Column(name = "CITY")
     private String city;
+
+    @Column(name = "STATE")
     private String state;
+
+    public EContact() {
+    }
 
     public EContact(String countryCode, String zipCode, Long phone, String city, String state) {
         this.countryCode = countryCode;

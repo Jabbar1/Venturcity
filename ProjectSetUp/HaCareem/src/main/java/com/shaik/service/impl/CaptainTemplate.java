@@ -1,30 +1,29 @@
 package com.shaik.service.impl;
 
 import com.shaik.domain.entity.ECaptain;
-import com.shaik.domain.repository.BaseRepository;
-import com.shaik.model.Cab;
+import com.shaik.domain.repository.CaptainRepository;
+import com.shaik.mapper.CaptainMapper;
 import com.shaik.model.Captain;
-import com.shaik.service.operations.CabOperations;
 import com.shaik.service.operations.CaptainOperations;
-import com.shaik.service.operations.RideOperations;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.inject.Named;
+import java.util.UUID;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
  * Created by jabbars on 2/25/2017.
  */
-public class CaptainTemplate extends CabTemplate<Captain,ECaptain,Long> implements CaptainOperations{
+@Named("CaptainTemplate")
+public class CaptainTemplate extends CabTemplate<Captain,ECaptain,UUID> implements CaptainOperations{
 
-    public CaptainTemplate(BaseRepository<ECaptain, Long> baseRepository,
-                           Function<ECaptain, Captain> modelMapper,
-                           Function<Captain, ECaptain> entityMapper,
-                           BiFunction<Captain, ECaptain, ECaptain> updateMapper,
+    private CaptainRepository captainRepository;
+
+    public CaptainTemplate(CaptainRepository captainRepository,
                            BaseEntityValidator<Captain> baseEntityValidator) {
 
-        super(baseRepository, modelMapper, entityMapper, updateMapper, baseEntityValidator);
+        super(captainRepository, CaptainMapper.entity, CaptainMapper.model, CaptainMapper.update, baseEntityValidator);
+        this.captainRepository = captainRepository;
     }
 
     @Override

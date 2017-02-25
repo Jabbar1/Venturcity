@@ -10,6 +10,9 @@ public class Path {
     private Double distance;
 
 
-
-
+    public Path(String from, String to, Double distance) {
+        this.from = from;
+        this.to = to;
+        this.distance = distance;
+    }
 }

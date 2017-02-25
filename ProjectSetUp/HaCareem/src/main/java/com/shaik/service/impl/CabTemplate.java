@@ -1,6 +1,5 @@
 package com.shaik.service.impl;
 
-import com.shaik.domain.entity.ECab;
 import com.shaik.domain.entity.EUser;
 import com.shaik.domain.repository.BaseRepository;
 import com.shaik.model.Cab;
@@ -49,6 +48,11 @@ public abstract class CabTemplate<C extends Cab,E extends EUser,ID extends Seria
 
     @Override
     public Boolean stopService(ZonedDateTime from, ZonedDateTime to) {
+        return null;
+    }
+
+    @Override
+    public Boolean resumeService(ZonedDateTime from, ZonedDateTime to) {
         return null;
     }
 }

@@ -1,38 +1,47 @@
 package com.shaik.domain.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * Created by jabbars on 2/25/2017.
  */
 @MappedSuperclass
-public class EUser {
+public abstract class EUser{
 
-    /**
-     * For time being I am using Long.
-     * In Actual Case we should use UUID, which will guarantee Uniqueness
-     */
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "CHAR(32)")
+    private UUID uuid;
 
+    @Column(name = "name")
     private String name;
-    private String country;
-    private EContact contact;
-    private Version version;
 
-    public EUser(String name, String country, EContact contact) {
+    @Embedded
+    private EContact contact;
+
+    @Version
+    @Column(name = "version")
+    private Long version;
+
+    public EUser() {
+    }
+
+    public EUser(String name, EContact contact) {
         this.name = name;
-        this.country = country;
         this.contact = contact;
     }
 
-    public Long getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public String getName() {
@@ -43,14 +52,6 @@ public class EUser {
         this.name = name;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public EContact getContact() {
         return contact;
     }
@@ -59,11 +60,11 @@ public class EUser {
         this.contact = contact;
     }
 
-    public Version getVersion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setVersion(Version version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 }

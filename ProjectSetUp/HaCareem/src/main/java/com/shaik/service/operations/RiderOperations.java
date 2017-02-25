@@ -11,4 +11,6 @@ import java.io.Serializable;
 public interface RiderOperations{
 
     Boolean request(Long userId, CabRequest request);
+    Boolean requestLater(Long userId, CabRequest request);
+    Boolean planRide(Long userId, CabRequest request);
 }

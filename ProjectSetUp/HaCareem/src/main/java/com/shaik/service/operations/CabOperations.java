@@ -16,6 +16,7 @@ public interface CabOperations<C extends Cab, ID extends Serializable> extends U
     Double totalAmountEarned(ZonedDateTime from, ZonedDateTime to);
     Long noOfRides(ZonedDateTime from, ZonedDateTime to);
     Boolean stopService(ZonedDateTime from, ZonedDateTime to);
+    Boolean resumeService(ZonedDateTime from, ZonedDateTime to);
 
 
 }
