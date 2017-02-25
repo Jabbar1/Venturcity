@@ -1,3 +1,4 @@
+/*
 package com.shaik.service.impl;
 
 import com.shaik.app.CareemApp;
@@ -24,9 +25,11 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.*;
 
+*/
 /**
  * Created by jabbars on 1/24/2017.
- */
+ *//*
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {CareemApp.class, TestConfig.class})
 @TestExecutionListeners(listeners = {
@@ -110,4 +113,4 @@ public class FractionTemplateTest extends AbstractTestExecutionListener {
         Fraction found = fractionOperations.find(created.getId());
     }
 
-}
+}*/

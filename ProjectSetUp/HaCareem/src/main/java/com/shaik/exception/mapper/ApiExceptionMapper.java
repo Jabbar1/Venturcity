@@ -1,6 +1,8 @@
 package com.shaik.exception.mapper;
 
 import com.shaik.exception.BaseException;
+import com.shaik.exception.ConstraintValidationException;
+import com.shaik.exception.UnsupportedOperationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -28,12 +30,24 @@ public class ApiExceptionMapper {
     }
 
     @ExceptionHandler({
-            BaseException.class
+            BaseException.class,
+            ConstraintValidationException.class
     })
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     @ResponseBody
     public Fault clientException(BaseException exception) {
         String code = HttpStatus.BAD_REQUEST.getReasonPhrase();
+        String refId = UUID.randomUUID().toString();
+        return new Fault(refId, exception.getLocalizedMessage(), code);
+    }
+
+    @ExceptionHandler({
+            UnsupportedOperationException.class
+    })
+    @ResponseStatus(value = HttpStatus.NOT_IMPLEMENTED)
+    @ResponseBody
+    public Fault notImplemented(BaseException exception) {
+        String code = HttpStatus.NOT_IMPLEMENTED.getReasonPhrase();
         String refId = UUID.randomUUID().toString();
         return new Fault(refId, exception.getLocalizedMessage(), code);
     }
