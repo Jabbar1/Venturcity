@@ -13,11 +13,18 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * This is a Generic Resource that Handles Requests from all Users
+ *  1. Rider
+ *  2. Captain
+ *  3. Owner
+ *
+ *  All apis here are common to all
+ *
  * Created by jabbars on 2/26/2017.
  */
 public abstract class BaseRideResource<M extends User, ID extends Serializable> {
 
-    RideOperations<M, ID> rideOperations;
+    protected RideOperations<M, ID> rideOperations;
 
 
     public BaseRideResource(RideOperations<M, ID> rideOperations) {

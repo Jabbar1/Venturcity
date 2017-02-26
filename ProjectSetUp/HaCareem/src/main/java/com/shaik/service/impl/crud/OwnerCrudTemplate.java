@@ -1,7 +1,6 @@
 package com.shaik.service.impl.crud;
 
 import com.shaik.domain.entity.EOwner;
-import com.shaik.domain.repository.BaseRepository;
 import com.shaik.domain.repository.OwnerRepository;
 import com.shaik.mapper.OwnerMapper;
 import com.shaik.model.Owner;
@@ -11,16 +10,14 @@ import com.shaik.service.operations.crud.OwnerCrudOperation;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.UUID;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  * Created by jabbars on 2/26/2017.
  */
 @Named("OwnerCrudTemplate")
-public class OwnerCrudTemplate extends BaseCrudTemplate<Owner,EOwner,UUID> implements OwnerCrudOperation{
+public class OwnerCrudTemplate extends BaseCrudTemplate<Owner, EOwner, UUID> implements OwnerCrudOperation {
 
-    OwnerRepository ownerRepository;
+    private OwnerRepository ownerRepository;
 
     @Inject
     public OwnerCrudTemplate(BaseEntityValidator<Owner> baseEntityValidator,

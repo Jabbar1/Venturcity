@@ -12,6 +12,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
+ * This Resource is Used to Communicate with Other Services
+ * EX. Google Maps, Location
+ * <p>
  * Created by jabbars on 2/21/2017.
  */
 @RestController("IntegrationResource")
@@ -20,7 +23,7 @@ public class IntegrationResource {
 
     @Inject
     @Named("GoogleAPi")
-    GoogleOperations googleOperations;
+    protected GoogleOperations googleOperations;
 
     @RequestMapping(
             value = "",

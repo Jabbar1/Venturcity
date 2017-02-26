@@ -1,6 +1,5 @@
 package com.shaik.rest.ride;
 
-import com.shaik.model.CabRequest;
 import com.shaik.model.Captain;
 import com.shaik.model.TrackDetails;
 import com.shaik.service.operations.ride.CaptainOperations;
@@ -9,17 +8,19 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
-import java.util.List;
 import java.util.UUID;
 
 /**
+ * This Resource Handles the Requests from a Captain,
+ * Which are specifically meant for Him
+ * <p>
  * Created by jabbars on 2/26/2017.
  */
 @RestController("CaptainRideViewResource")
 @RequestMapping(value = "v1/api/captain/ride")
 public class CaptainResource extends CabResource<Captain, UUID> {
 
-    CaptainOperations captainOperations;
+    protected CaptainOperations captainOperations;
 
     @Inject
     public CaptainResource(CaptainOperations captainOperations) {
@@ -27,6 +28,16 @@ public class CaptainResource extends CabResource<Captain, UUID> {
         this.captainOperations = captainOperations;
     }
 
+    /**
+     * This API sends data of the cab. The details we required is
+     * Speed, Location,Ride Status(isAvailable for a new Ride Request)
+     * <p>
+     * It will Help at the time Booking a New Ride for a USER, to Calculate
+     * effective ETA
+     *
+     * @param id
+     * @param details
+     */
     @RequestMapping(
             value = "/{id}/send/location",
             method = RequestMethod.POST,

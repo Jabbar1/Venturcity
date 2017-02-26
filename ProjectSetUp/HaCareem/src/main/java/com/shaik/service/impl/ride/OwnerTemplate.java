@@ -6,6 +6,8 @@ import com.shaik.model.Directions;
 import com.shaik.model.Invoice;
 import com.shaik.model.Owner;
 import com.shaik.service.operations.ride.OwnerOperations;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Named;
 import java.util.UUID;
@@ -14,7 +16,7 @@ import java.util.UUID;
  * Created by jabbars on 2/25/2017.
  */
 @Named("hcOwnerTemplate")
-public class OwnerTemplate extends CabTemplate<Owner,EOwner,UUID>  implements OwnerOperations{
+public class OwnerTemplate extends CabTemplate<Owner, EOwner, UUID> implements OwnerOperations {
 
     private OwnerRepository ownerRepository;
 
@@ -23,6 +25,9 @@ public class OwnerTemplate extends CabTemplate<Owner,EOwner,UUID>  implements Ow
         this.ownerRepository = ownerRepository;
     }
 
+    // Here Validations can be performed for the User
+
+
     /**
      * OverRiding RideOperations which are not valid for Owner and Throw NotSupported Exception
      *
@@ -30,18 +35,21 @@ public class OwnerTemplate extends CabTemplate<Owner,EOwner,UUID>  implements Ow
      */
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public Boolean finish() {
-        throw new  UnsupportedOperationException("Operation not supported for Owner");
+        throw new UnsupportedOperationException("Operation not supported for Owner");
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public Boolean changeDirection(Directions directions) {
-        throw new  UnsupportedOperationException("Operation not supported for Owner");
+        throw new UnsupportedOperationException("Operation not supported for Owner");
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public Invoice invoice(UUID rideId) {
-        throw new  UnsupportedOperationException("Operation not supported for Owner");
+        throw new UnsupportedOperationException("Operation not supported for Owner");
     }
 
 }

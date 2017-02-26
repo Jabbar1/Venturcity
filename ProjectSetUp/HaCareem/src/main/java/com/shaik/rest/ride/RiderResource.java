@@ -2,7 +2,6 @@ package com.shaik.rest.ride;
 
 import com.shaik.model.CabRequest;
 import com.shaik.model.Rider;
-import com.shaik.rest.ride.BaseRideResource;
 import com.shaik.service.operations.ride.RiderOperations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,14 +11,17 @@ import javax.inject.Inject;
 import java.util.UUID;
 
 /**
+ * This Resource Handles the Requests from a Rider,
+ * Which are specifically meant for Him
+ * <p>
  * Created by jabbars on 2/26/2017.
  */
 @RestController("RiderRideViewResource")
 @RequestMapping(value = "v1/api/rider/ride")
-public class RiderResource extends BaseRideResource<Rider,UUID> {
+public class RiderResource extends BaseRideResource<Rider, UUID> {
 
 
-    RiderOperations riderOperations;
+    protected RiderOperations riderOperations;
 
     @Inject
     public RiderResource(RiderOperations riderOperations) {
@@ -41,7 +43,7 @@ public class RiderResource extends BaseRideResource<Rider,UUID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public void bookACab(@PathVariable("id") String id,
-                                     @RequestBody CabRequest request) {
+                         @RequestBody CabRequest request) {
         riderOperations.request(UUID.fromString(id), request);
     }
 
@@ -60,23 +62,24 @@ public class RiderResource extends BaseRideResource<Rider,UUID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public void bookCabLater(@PathVariable("id") String id,
-                                     @RequestBody CabRequest request) {
+                             @RequestBody CabRequest request) {
         riderOperations.requestLater(UUID.fromString(id), request);
     }
 
     /**
      * This is My Idea to Plan a Ride. The Main motivation behind this is,
      * we Have some scenarios, where we can book a Cab at the time booking some other events
-     *
+     * <p>
      * Location -> Cab -> Movies/Event -> Cab -> Location
      * Location -> Cab -> Restaurant   -> Cab -> Movies/Event -> Cab -> Location
      * Location -> Cab -> Airport-> Take Flight -> Airport -> Cab -> Location (As Careem
-     *
+     * <p>
      * Plan a Ride, we can achieve by adding Ticket booking feature(ECommerce).
      * By this Careem can fulfill all transportation needs of a Customer.
      * ***(CAB + TICKET_BOOKING[Movie,Flight,Event,Boat etc.,]) ***
-     *
+     * <p>
      * For More details read "CareemCaseStudy.pptx"
+     *
      * @param id
      * @param request
      */
@@ -88,7 +91,7 @@ public class RiderResource extends BaseRideResource<Rider,UUID> {
     )
     @ResponseStatus(HttpStatus.OK)
     public void planARide(@PathVariable("id") String id,
-                                     @RequestBody CabRequest request) {
+                          @RequestBody CabRequest request) {
         riderOperations.planRide(UUID.fromString(id), request);
     }
 

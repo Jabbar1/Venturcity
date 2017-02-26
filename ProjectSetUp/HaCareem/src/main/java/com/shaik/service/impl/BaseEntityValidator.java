@@ -2,6 +2,8 @@ package com.shaik.service.impl;
 
 import com.shaik.exception.ConstraintValidationException;
 import com.shaik.service.operations.EntityValidator;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Named;
 import javax.validation.ConstraintViolation;
@@ -24,6 +26,7 @@ public class BaseEntityValidator<T> implements EntityValidator<T> {
     }
 
 
+    @Override
     public Set<ConstraintViolation<T>> validate(T model) {
 
         EntityValidator<T> validator = new BaseEntityValidator<>(Validation.buildDefaultValidatorFactory().getValidator());
