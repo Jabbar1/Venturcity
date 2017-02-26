@@ -94,8 +94,7 @@ public abstract class BaseResource<L, ID extends Serializable> {
      */
     @RequestMapping(
             value = "/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE
+            method = RequestMethod.DELETE
     )
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") ID id) {
