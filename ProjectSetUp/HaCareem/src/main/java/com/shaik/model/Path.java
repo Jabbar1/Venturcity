@@ -15,4 +15,16 @@ public class Path {
         this.to = to;
         this.distance = distance;
     }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
 }

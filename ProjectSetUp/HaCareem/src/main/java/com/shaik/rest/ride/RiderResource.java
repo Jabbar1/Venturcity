@@ -47,6 +47,32 @@ public class RiderResource extends BaseRideResource<Rider, UUID> {
         riderOperations.request(UUID.fromString(id), request);
     }
 
+    /**
+     * (NEW)
+     * When we display all available Cabs with their ETA's
+     *
+     * User can select in any one of them
+     *  (or)
+     * He can Just depend on System to Pick one for Him
+     * IF he selects a CAB from the List, Just Pick and Send
+     *
+     * @param id
+     * @param cabID
+     * @param request
+     */
+    @RequestMapping(
+            value = "/{id}/request/cab/{cabID}",
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ResponseStatus(HttpStatus.OK)
+    public void bookACab(@PathVariable("id") String id,
+                         @PathVariable("cabID") String cabID,
+                         @RequestBody CabRequest request) {
+        riderOperations.request(UUID.fromString(id), UUID.fromString(cabID), request);
+    }
+
 
     /**
      * Books cab at the requested time and Place
@@ -67,6 +93,7 @@ public class RiderResource extends BaseRideResource<Rider, UUID> {
     }
 
     /**
+     * (NEW)
      * This is My Idea to Plan a Ride. The Main motivation behind this is,
      * we Have some scenarios, where we can book a Cab at the time booking some other events
      * <p>
