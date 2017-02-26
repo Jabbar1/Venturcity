@@ -11,12 +11,12 @@ import java.time.ZonedDateTime;
  */
 public interface CabOperations<C extends Cab, ID extends Serializable> extends RideOperations<C,ID> {
 
-    TrackDetails track();
-    TrackDetails distanceCovered();
-    Double totalAmountEarned(ZonedDateTime from, ZonedDateTime to);
-    Long noOfRides(ZonedDateTime from, ZonedDateTime to);
-    Boolean stopService(ZonedDateTime from, ZonedDateTime to);
-    Boolean resumeService(ZonedDateTime from, ZonedDateTime to);
+    TrackDetails track(ID cabId);
+    TrackDetails distanceCovered(ID cabId);
+    Double totalAmountEarned(ID cabID,ZonedDateTime from, ZonedDateTime to);
+    Long noOfRides(ID cabID,ZonedDateTime from, ZonedDateTime to);
+    Boolean stopService(ID cabID,ZonedDateTime from, ZonedDateTime to);
+    Boolean resumeService(ID cabID,ZonedDateTime from, ZonedDateTime to);
 
 
 }

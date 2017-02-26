@@ -1,6 +1,7 @@
 package com.shaik.service.operations.ride;
 
 import com.shaik.model.Captain;
+import com.shaik.model.TrackDetails;
 
 import java.util.UUID;
 
@@ -9,6 +10,6 @@ import java.util.UUID;
  */
 public interface CaptainOperations extends CabOperations<Captain,UUID>{
 
-    void sendData();
-    void acceptRide();
+    void sendData(UUID id,TrackDetails trackDetails);
+    void acceptRide(UUID id);
 }

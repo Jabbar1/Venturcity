@@ -1,11 +1,13 @@
 package com.shaik.domain.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Created by jabbars on 2/25/2017.
  */
-@Entity(name = "CAPTAIN")
+@Entity
+@Table(name ="CAPTAIN" )
 public class ECaptain extends ECab {
 
     public ECaptain() {

@@ -26,8 +26,7 @@ import java.util.stream.Collectors;
  */
 @Validated
 public abstract class BaseCrudTemplate<M, E, ID extends Serializable>
-        implements BaseCrudOperations<M, ID>
-{
+        implements BaseCrudOperations<M, ID> {
 
     Logger LOGGER = LoggerFactory.getLogger(BaseCrudTemplate.class);
 
@@ -49,16 +48,16 @@ public abstract class BaseCrudTemplate<M, E, ID extends Serializable>
         this.baseEntityValidator = baseEntityValidator;
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public M create(@Valid M request) {
         E entity = entityMapper.apply(request);
         entity = baseRepository.save(entity);
         return modelMapper.apply(entity);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public M update(@NotNull ID id, @Valid M request) {
         E entity = findOne(id);
         entity = updateMapper.apply(request, entity);
@@ -66,23 +65,23 @@ public abstract class BaseCrudTemplate<M, E, ID extends Serializable>
         return modelMapper.apply(entity);
     }
 
-    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public List<M> findAll() {
         List<E> result = baseRepository.findAll();
         return result.stream().map(modelMapper)
                 .collect(Collectors.toList());
     }
 
-    @Transactional(propagation = Propagation.SUPPORTS)
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS)
     public M find(@NotNull ID id) {
         E entity = findOne(id);
         return modelMapper.apply(entity);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public void delete(@NotNull ID id) {
         findOne(id);
         baseRepository.delete(id);

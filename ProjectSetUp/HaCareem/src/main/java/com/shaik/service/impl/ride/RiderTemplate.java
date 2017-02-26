@@ -24,17 +24,17 @@ public class RiderTemplate extends RideTemplate<Rider,ERider,UUID> implements Ri
     }
 
     @Override
-    public Boolean request(Long userId, CabRequest request) {
+    public Boolean request(UUID userId, CabRequest request) {
         return null;
     }
 
     @Override
-    public Boolean requestLater(Long userId, CabRequest request) {
+    public Boolean requestLater(UUID userId, CabRequest request) {
         return null;
     }
 
     @Override
-    public Boolean planRide(Long userId, CabRequest request) {
+    public Boolean planRide(UUID userId, CabRequest request) {
         return null;
     }
 }

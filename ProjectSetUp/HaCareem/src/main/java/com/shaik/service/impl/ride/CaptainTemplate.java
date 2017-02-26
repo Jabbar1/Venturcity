@@ -4,6 +4,7 @@ import com.shaik.domain.entity.ECaptain;
 import com.shaik.domain.repository.BaseRepository;
 import com.shaik.domain.repository.CaptainRepository;
 import com.shaik.model.Captain;
+import com.shaik.model.TrackDetails;
 import com.shaik.service.operations.ride.CaptainOperations;
 
 import javax.inject.Named;
@@ -23,12 +24,12 @@ public class CaptainTemplate extends CabTemplate<Captain,ECaptain,UUID> implemen
     }
 
     @Override
-    public void sendData() {
+    public void sendData(UUID id, TrackDetails trackDetails) {
 
     }
 
     @Override
-    public void acceptRide() {
+    public void acceptRide(UUID id) {
 
     }
 }

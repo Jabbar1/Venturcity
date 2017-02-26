@@ -20,32 +20,32 @@ public abstract class CabTemplate<C extends Cab,E extends EUser,ID extends Seria
     }
 
     @Override
-    public TrackDetails track() {
+    public TrackDetails track(ID cabID) {
         return null;
     }
 
     @Override
-    public TrackDetails distanceCovered() {
+    public TrackDetails distanceCovered(ID cabID) {
         return null;
     }
 
     @Override
-    public Double totalAmountEarned(ZonedDateTime from, ZonedDateTime to) {
+    public Double totalAmountEarned(ID cabID,ZonedDateTime from, ZonedDateTime to) {
         return null;
     }
 
     @Override
-    public Long noOfRides(ZonedDateTime from, ZonedDateTime to) {
+    public Long noOfRides(ID cabID,ZonedDateTime from, ZonedDateTime to) {
         return null;
     }
 
     @Override
-    public Boolean stopService(ZonedDateTime from, ZonedDateTime to) {
+    public Boolean stopService(ID cabID,ZonedDateTime from, ZonedDateTime to) {
         return null;
     }
 
     @Override
-    public Boolean resumeService(ZonedDateTime from, ZonedDateTime to) {
+    public Boolean resumeService(ID cabID,ZonedDateTime from, ZonedDateTime to) {
         return null;
     }
 }

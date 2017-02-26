@@ -1,11 +1,13 @@
 package com.shaik.domain.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Created by jabbars on 2/25/2017.
  */
-@Entity(name = "RIDER")
+@Entity
+@Table(name = "RIDER")
 public class ERider extends EUser {
 
     // Some More details

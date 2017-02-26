@@ -11,7 +11,7 @@ import java.util.UUID;
  */
 public interface RiderOperations extends RideOperations<Rider,UUID>{
 
-    Boolean request(Long userId, CabRequest request);
-    Boolean requestLater(Long userId, CabRequest request);
-    Boolean planRide(Long userId, CabRequest request);
+    Boolean request(UUID userId, CabRequest request);
+    Boolean requestLater(UUID userId, CabRequest request);
+    Boolean planRide(UUID userId, CabRequest request);
 }

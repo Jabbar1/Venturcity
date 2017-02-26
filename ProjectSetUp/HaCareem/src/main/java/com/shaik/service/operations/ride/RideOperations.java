@@ -1,6 +1,11 @@
 package com.shaik.service.operations.ride;
 
+import com.shaik.model.CabRequest;
+import com.shaik.model.Directions;
 import com.shaik.model.Invoice;
+import com.shaik.model.Reason;
+
+import java.util.List;
 
 /**
  * This Interface Provides all Information regarding Rides
@@ -14,9 +19,9 @@ public interface RideOperations<M, ID> {
     Integer completed();
     Integer cancelled();
     Integer total();
-    Boolean cancel();
+    Boolean cancel(Reason reason);
     Boolean finish();
-    Boolean changeDirection();
-    Invoice invoice();
-    M view();
+    Boolean changeDirection(Directions directions);
+    Invoice invoice(ID rideId);
+    List<M> view(CabRequest request);
 }

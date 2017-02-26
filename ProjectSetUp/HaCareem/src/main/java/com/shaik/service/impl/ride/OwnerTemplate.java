@@ -2,6 +2,7 @@ package com.shaik.service.impl.ride;
 
 import com.shaik.domain.entity.EOwner;
 import com.shaik.domain.repository.OwnerRepository;
+import com.shaik.model.Directions;
 import com.shaik.model.Invoice;
 import com.shaik.model.Owner;
 import com.shaik.service.operations.ride.OwnerOperations;
@@ -34,12 +35,12 @@ public class OwnerTemplate extends CabTemplate<Owner,EOwner,UUID>  implements Ow
     }
 
     @Override
-    public Boolean changeDirection() {
+    public Boolean changeDirection(Directions directions) {
         throw new  UnsupportedOperationException("Operation not supported for Owner");
     }
 
     @Override
-    public Invoice invoice() {
+    public Invoice invoice(UUID rideId) {
         throw new  UnsupportedOperationException("Operation not supported for Owner");
     }
 

@@ -3,12 +3,13 @@ package com.shaik.service.impl.ride;
 import com.shaik.domain.entity.EUser;
 import com.shaik.domain.repository.BaseRepository;
 import com.shaik.integration.google.GoogleOperations;
-import com.shaik.model.Invoice;
-import com.shaik.model.User;
+import com.shaik.model.*;
 import com.shaik.service.operations.ride.RideOperations;
 
 import javax.inject.Inject;
 import java.io.Serializable;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by jabbars on 2/25/2017.
@@ -41,7 +42,7 @@ public abstract class RideTemplate<R extends User,E extends EUser,ID extends Ser
     }
 
     @Override
-    public Boolean cancel() {
+    public Boolean cancel(Reason Reason) {
         return null;
     }
 
@@ -51,17 +52,17 @@ public abstract class RideTemplate<R extends User,E extends EUser,ID extends Ser
     }
 
     @Override
-    public Boolean changeDirection() {
+    public Boolean changeDirection(Directions directions) {
         return null;
     }
 
     @Override
-    public Invoice invoice() {
+    public Invoice invoice(ID rideId) {
         return null;
     }
 
     @Override
-    public R view() {
+    public List<R> view(CabRequest request) {
         return null;
     }
 }
